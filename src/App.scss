@@ -2,6 +2,14 @@ $darkBlue: #31485a;
 $yellow: #fca312;
 $lightGray: #dfe6ec;
 $darkGray: #748e9d;
+$red: #e7281a;
+
+@mixin flex($jc, $ai, $d) {
+  display: flex;
+  justify-content: $jc;
+  align-items: $ai;
+  flex-direction: $d;
+}
 
 #root {
   width: 100%;
@@ -11,15 +19,18 @@ $darkGray: #748e9d;
 .App {
   width: 100%;
   height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flex(flex-start, center, column);
+  .disclaimer {
+    margin-block: 50px;
+    font-size: 25px;
+    font-weight: 800;
+    color: $red;
+    text-transform: uppercase;
+  }
 }
 .container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  @include flex(center, center, column);
+  height: 100%;
   & > h1 {
     color: $darkBlue;
     margin-bottom: 15px;
@@ -27,8 +38,9 @@ $darkGray: #748e9d;
     letter-spacing: 1px;
   }
   .grid {
+    width: 920px;
     display: grid;
-    grid-template-columns: repeat(4, 100px);
+    grid-template-columns: repeat(8, 1fr);
     gap: 20px;
 
     .card {
@@ -60,7 +72,7 @@ $darkGray: #748e9d;
         }
       }
       &.matched {
-        background-color: #fca312;
+        background-color: $yellow;
       }
     }
 
@@ -74,23 +86,35 @@ $darkGray: #748e9d;
       }
     }
   }
-  .number-moves {
-    background-color: $lightGray;
-    border-radius: 10px;
-    padding: 15px;
+  .add-ons {
+    @include flex(space-between, center, row);
+    gap: 15px;
     width: 100%;
-    margin-top: 20px;
-    text-align: center;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    span {
-      font-size: 19px;
-      font-weight: 700;
-      color: $darkGray;
+    margin-top: 30px;
+    .number-moves {
+      background-color: $lightGray;
+      border-radius: 10px;
+      padding: 15px;
+      text-align: center;
+      @include flex(space-between, center, row);
+      flex: 1;
+      span {
+        font-size: 19px;
+        font-weight: 700;
+        color: $darkGray;
+      }
+      h1 {
+        color: $darkBlue;
+      }
     }
-    h1 {
-      color: $darkBlue;
+    .change-pair {
+      font-size: 22px;
+      color: $lightGray;
+      text-transform: uppercase;
+      border-radius: 10px;
+      padding: 21px 15px;
+      background-color: #fca312;
+      flex: 1;
     }
   }
 }
