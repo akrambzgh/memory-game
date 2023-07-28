@@ -21,100 +21,100 @@ $red: #e7281a;
   height: 100vh;
   @include flex(flex-start, center, column);
   .disclaimer {
-    margin-block: 50px;
+    margin-top: 50px;
     font-size: 25px;
     font-weight: 800;
     color: $red;
     text-transform: uppercase;
   }
-}
-.container {
-  @include flex(center, center, column);
-  height: 100%;
-  & > h1 {
-    color: $darkBlue;
-    margin-bottom: 15px;
-    font-family: 27px;
-    letter-spacing: 1px;
-  }
-  .grid {
-    width: 920px;
-    display: grid;
-    grid-template-columns: repeat(8, 1fr);
-    gap: 20px;
+  .container {
+    @include flex(center, center, column);
+    height: 100%;
+    & > h1 {
+      color: $darkBlue;
+      margin-bottom: 15px;
+      font-family: 27px;
+      letter-spacing: 1px;
+    }
+    .grid {
+      width: 920px;
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      gap: 20px;
 
-    .card {
-      background-color: $darkBlue;
-      border-radius: 50%;
-      height: 100px;
-      text-align: center;
-      line-height: 100px;
-      cursor: pointer;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-      transition: 300ms;
-      -webkit-animation: 2s hideCard linear;
-      animation: 2s hideCard linear;
+      .card {
+        background-color: $darkBlue;
+        border-radius: 50%;
+        height: 100px;
+        text-align: center;
+        line-height: 100px;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        transition: 300ms;
+        -webkit-animation: 2s hideCard linear;
+        animation: 2s hideCard linear;
 
-      h1 {
-        color: #dfe6ec;
-        opacity: 0;
-        -webkit-animation: 2s hideText linear;
-        animation: 2s hideText linear;
-      }
-
-      &.active {
-        transform: rotateY(0);
         h1 {
-          opacity: 1;
+          color: #dfe6ec;
+          opacity: 0;
+          -webkit-animation: 2s hideText linear;
+          animation: 2s hideText linear;
+        }
+
+        &.active {
+          transform: rotateY(0);
+          h1 {
+            opacity: 1;
+          }
+        }
+        &.matched {
+          background-color: $yellow;
         }
       }
-      &.matched {
-        background-color: $yellow;
-      }
-    }
 
-    .unmatch {
-      background-color: $darkGray;
-      border-radius: 50%;
-      -webkit-animation: 2s hideCard linear;
-      animation: 2s hideCard linear;
-      &.flipped {
-        transform: rotateY(180deg);
+      .unmatch {
+        background-color: $darkGray;
+        border-radius: 50%;
+        -webkit-animation: 2s hideCard linear;
+        animation: 2s hideCard linear;
+        &.flipped {
+          transform: rotateY(180deg);
+        }
       }
     }
-  }
-  .add-ons {
-    @include flex(space-between, center, row);
-    gap: 15px;
-    width: 100%;
-    margin-top: 30px;
-    .number-moves {
-      background-color: $lightGray;
-      border-radius: 10px;
-      padding: 15px;
-      text-align: center;
+    .add-ons {
       @include flex(space-between, center, row);
-      flex: 1;
-      span {
-        font-size: 19px;
-        font-weight: 700;
-        color: $darkGray;
+      gap: 15px;
+      width: 100%;
+      margin-top: 30px;
+      .number-moves {
+        background-color: $lightGray;
+        border-radius: 10px;
+        padding: 15px;
+        text-align: center;
+        @include flex(space-between, center, row);
+        flex: 1;
+        span {
+          font-size: 19px;
+          font-weight: 700;
+          color: $darkGray;
+        }
+        h1 {
+          color: $darkBlue;
+        }
       }
-      h1 {
-        color: $darkBlue;
+      .change-pair {
+        font-size: 22px;
+        color: $lightGray;
+        text-transform: uppercase;
+        border-radius: 10px;
+        padding: 21px 15px;
+        background-color: #fca312;
+        flex: 1;
       }
-    }
-    .change-pair {
-      font-size: 22px;
-      color: $lightGray;
-      text-transform: uppercase;
-      border-radius: 10px;
-      padding: 21px 15px;
-      background-color: #fca312;
-      flex: 1;
     }
   }
 }
