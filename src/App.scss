@@ -1,0 +1,136 @@
+$darkBlue: #31485a;
+$yellow: #fca312;
+$lightGray: #dfe6ec;
+$darkGray: #748e9d;
+
+#root {
+  width: 100%;
+  height: 100vh;
+}
+
+.App {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  & > h1 {
+    color: $darkBlue;
+    margin-bottom: 15px;
+    font-family: 27px;
+    letter-spacing: 1px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(4, 100px);
+    gap: 20px;
+
+    .card {
+      background-color: $darkBlue;
+      border-radius: 50%;
+      height: 100px;
+      text-align: center;
+      line-height: 100px;
+      cursor: pointer;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      transition: 300ms;
+      -webkit-animation: 2s hideCard linear;
+      animation: 2s hideCard linear;
+
+      h1 {
+        color: #dfe6ec;
+        opacity: 0;
+        -webkit-animation: 2s hideText linear;
+        animation: 2s hideText linear;
+      }
+
+      &.active {
+        transform: rotateY(0);
+        h1 {
+          opacity: 1;
+        }
+      }
+      &.matched {
+        background-color: #fca312;
+      }
+    }
+
+    .unmatch {
+      background-color: $darkGray;
+      border-radius: 50%;
+      -webkit-animation: 2s hideCard linear;
+      animation: 2s hideCard linear;
+      &.flipped {
+        transform: rotateY(180deg);
+      }
+    }
+  }
+  .number-moves {
+    background-color: $lightGray;
+    border-radius: 10px;
+    padding: 15px;
+    width: 100%;
+    margin-top: 20px;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    span {
+      font-size: 19px;
+      font-weight: 700;
+      color: $darkGray;
+    }
+    h1 {
+      color: $darkBlue;
+    }
+  }
+}
+
+// Animations
+@-webkit-keyframes hideCard {
+  0%,
+  70% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(180deg);
+  }
+}
+
+@keyframes hideCard {
+  0%,
+  70% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(180deg);
+  }
+}
+
+@-webkit-keyframes hideText {
+  0%,
+  84% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 0;
+  }
+}
+
+@keyframes hideText {
+  0%,
+  84% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 0;
+  }
+}
